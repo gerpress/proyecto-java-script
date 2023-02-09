@@ -79,16 +79,28 @@ class Producto {
   }
 }
 
-const Productos = [new Producto("MUSCLE MAX X 90 TBS", 1820, 4), new Producto("ULTRA MASS X 1500 GRS", 4680, 4), new Producto("CREATINA MICRONIZADA X 300 GRS", 7500, 4), new Producto("PRE WAR (CON CAFEINA)", 3850, 4), new Producto("WHEY X PRO - 1 LB", 4320, 4), new Producto("WHEY PROTEIN TRUE MADE X 2.05 LB", 6500, 4)];
-
-console.log(Productos);
+const listaDeProductos = [new Producto("MUSCLE MAX X 90 TBS", 1820, 4), new Producto("ULTRA MASS X 1500 GRS", 4680, 4), new Producto("CREATINA MICRONIZADA X 300 GRS", 7500, 4), new Producto("PRE WAR (CON CAFEINA)", 3850, 4), new Producto("WHEY X PRO - 1 LB", 4320, 4), new Producto("WHEY PROTEIN TRUE MADE X 2.05 LB", 6500, 4)];
 
 //FUNCIONES
 
 function obtenerProducto(nombre) {
-  return Productos.find((Producto) => {
+  return listaDeProductos.find((Producto) => {
     return Producto.nombre === nombre;
   });
+}
+
+function cantidadAComprar(cantidad) {
+  return listaDeProductos.find((cantidad) => {
+    return Producto.cantidad === cantidad;
+  });
+}
+
+function hayProducotsDisponibles(Producto, cantidadAComprar) {
+  const productosDisponibles = Producto.cantidad.filter((Producto) => {
+    return !Producto.vendido;
+  });
+
+  return productosDisponibles.length >= cantidadAComprar;
 }
 
 //COMPRA
@@ -96,19 +108,23 @@ function obtenerProducto(nombre) {
 let productoAComprar = prompt("Ingrese el producto que desea comprar. Ingrese SALIR si quiere salir del programa");
 
 while (productoAComprar !== "SALIR") {
-  const Productos = obtenerProducto(productoAComprar);
+  const Producto = obtenerProducto(productoAComprar);
 
-  console.log(Productos);
-  //   if (Productos !== undefined) {
-  //     let cantidadDeProductos = parseInt(prompt("Ingrese la cantidad que desea comprar:"));
+  //SOLICITO LA CANTIDAD
+  if (Producto !== undefined) {
+    const cantidad = (cantidadAComprar = parseInt(prompt("Ingrese la cantidad que desea comprar")));
 
-  //     while (cantidadDeProductos <= 0) {
-  //       cantidadDeProductos = parseInt(prompt("Ingrese la cantidad que desea comprar:"));
-  //     }
-  //   } else "Producto Inválido";
+    while (cantidadAComprar <= 0 || !hayProducotsDisponibles(Producto, cantidadAComprar)) {
+      cantidadAComprar = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+    }
 
-  //   //SE LE VUELVE A PEDIR QUE INFRESE UN PRODUCTO
-  //   productoAComprar = prompt("Ingrese el producto que desea comprar. Ingrese SALIR si quiere salir del programa");
+    console.log(cantidadAComprar);
+  } else {
+    alert("Producto no encontrado");
+  }
+
+  //SE LE VUELVE A PEDIR QUE INFRESE UN PRODUCTO
+  productoAComprar = prompt("Ingrese el producto que desea comprar. Ingrese SALIR si quiere salir del programa");
 }
 
 // //COSTO POR ZONA ENVIO
