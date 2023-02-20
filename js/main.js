@@ -1,48 +1,50 @@
 // //CALCULO DE IMC
 
-function Usuario(edad, peso, altura) {
-  this.edad = edad;
-  this.peso = peso;
-  this.altura = altura;
-}
+// function Usuario(edad, peso, altura) {
+//   this.edad = edad;
+//   this.peso = peso;
+//   this.altura = altura;
+// }
 
-const formulario = document.getElementById("form label");
+const formulario = document.getElementById("formulario");
 formulario.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  let inputEdad = document.getElementById("Edad");
+  const inputPeso = document.getElementById("Peso");
+  const inputAltura = document.getElementById("Altura");
+  const resultado = document.getElementById("resultadoImc");
+
+  //Obtengo los input
+
+  let edad = parseInt(inputEdad.value);
+  const peso = parseFloat(inputPeso.value);
+  const altura = parseFloat(inputAltura.value);
+
+  while (edad <= 19) {
+    alert("Este cálculo es solo para adultos, ingrese una edad mayor a 20");
+    inputEdad.value = "";
+    return;
+  }
+  alert("Usted puede calcular su IMC");
+
+  const imc = (peso / (altura * altura)).toFixed(2);
+
+  if (imc < 18.5) {
+    resultado.innerText = `Su IMC es: ${imc} Se encuentra dentro del rango de peso insuficiente`;
+  } else if (imc > 18.5 && imc < 24.99) {
+    resultado.innerText = `Su IMC es: ${imc} se encuentra dentro del rango de peso normal o saludable`;
+  } else if (imc > 25.0 && imc < 29.99) {
+    resultado.innerText = `Su IMC es: ${imc} se encuentra dentro del rango de sobrepeso`;
+  } else if (imc >= 30) {
+    resultado.innerText = `Su IMC es: ${imc} se encuentra dentro del rango de obesidad`;
+  }
 });
 
-let edad = document.getElementById("Edad");
-parseInt(prompt("Ingrese una edad mayor o igual a 20"));
+// const datosUsuario = new Usuario(edad, peso, altura);
 
-while (edad <= 19) {
-  alert("Este cálculo es solo para adultos");
-  edad = parseInt(prompt("Ingrese una edad mayor o igual a 20"));
-}
-alert("Usted puede calcular su IMC");
-
-const peso = document.getElementById("peso");
-parseInt(prompt("Ingrese su peso en kg"));
-
-const altura = document.getElementById("altura");
-parseFloat(prompt("Ingrese su altura"));
-
-const imc = peso / (altura * altura).toFixed();
-alert(`Su IMC es: ${imc}`);
-
-if (imc < 18.5) {
-  alert("Se encuentra dentro del rango de peso insuficiente");
-} else if (imc > 18.5 && imc < 24.99) {
-  alert("se encuentra dentro del rango de peso normal o saludable");
-} else if (imc > 25.0 && imc < 29.99) {
-  alert("se encuentra dentro del rango de sobrepeso");
-} else if (imc >= 30) {
-  alert("se encuentra dentro del rango de sobrepeso");
-}
-
-const datosUsuario = new Usuario(edad, peso, altura);
-
-console.log(datosUsuario);
-console.log("finaliza el programa");
+// console.log(datosUsuario);
+// console.log("finaliza el programa");
 
 //CLASES PRODUTOS
 
