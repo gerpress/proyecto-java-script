@@ -1,4 +1,4 @@
-//CALCULO DE IMC
+// //CALCULO DE IMC
 
 function Usuario(edad, peso, altura) {
   this.edad = edad;
@@ -6,7 +6,13 @@ function Usuario(edad, peso, altura) {
   this.altura = altura;
 }
 
-let edad = parseInt(prompt("Ingrese una edad mayor o igual a 20"));
+const formulario = document.getElementById("form label");
+formulario.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
+let edad = document.getElementById("Edad");
+parseInt(prompt("Ingrese una edad mayor o igual a 20"));
 
 while (edad <= 19) {
   alert("Este cálculo es solo para adultos");
@@ -14,20 +20,22 @@ while (edad <= 19) {
 }
 alert("Usted puede calcular su IMC");
 
-const peso = parseInt(prompt("Ingrese su peso en kg"));
-const altura = parseFloat(prompt("Ingrese su altura"));
-const espacio = " ";
+const peso = document.getElementById("peso");
+parseInt(prompt("Ingrese su peso en kg"));
 
-const IMC = peso / (altura * altura);
-alert("Su IMC es:" + espacio + IMC);
+const altura = document.getElementById("altura");
+parseFloat(prompt("Ingrese su altura"));
 
-if (IMC < 18.5) {
+const imc = peso / (altura * altura).toFixed();
+alert(`Su IMC es: ${imc}`);
+
+if (imc < 18.5) {
   alert("Se encuentra dentro del rango de peso insuficiente");
-} else if (IMC > 18.5 && IMC < 24.9) {
+} else if (imc > 18.5 && imc < 24.99) {
   alert("se encuentra dentro del rango de peso normal o saludable");
-} else if (IMC > 25.0 && IMC < 29.9) {
+} else if (imc > 25.0 && imc < 29.99) {
   alert("se encuentra dentro del rango de sobrepeso");
-} else if (IMC >= 30) {
+} else if (imc >= 30) {
   alert("se encuentra dentro del rango de sobrepeso");
 }
 
@@ -39,64 +47,70 @@ console.log("finaliza el programa");
 //CLASES PRODUTOS
 
 class Producto {
-  constructor(nombre, precio) {
+  constructor(nombre, precio, cantidad) {
     this.nombre = nombre;
     this.precio = precio;
-    this.vendido = false;
+    this.cantidad = cantidad;
   }
 }
+
+let listaDeProductos = [new Producto("MUSCLE MAX X 90 TBS", 1820, 6), new Producto("ULTRA MASS X 1500 GRS", 4680, 8), new Producto("CREATINA MICRONIZADA X 300 GRS", 7500, 10), new Producto("PRE WAR (CON CAFEINA)", 3850, 5), new Producto("WHEY X PRO - 1 LB", 4320, 4), new Producto("WHEY PROTEIN TRUE MADE X 2.05 LB", 6500, 7)];
 
 //FUNCIONES
 
-function obtenerProducto(nombre) {
-  return listaDeProductos.find((producto) => producto.nombre === nombre);
+function agregarAlCarrito(carrito, nombre, cantidad) {
+  // Buscar el producto en la lista de productos
+  let producto = listaDeProductos.find((producto) => producto.nombre === nombre);
+
+  // Validar que el producto exista y que haya suficiente stock
+  if (producto && producto.cantidad >= cantidad) {
+    // Agregar el producto al carrito
+    carrito.push({ nombre, cantidad, precio: producto.precio });
+    // Actualizar el stock del producto
+    producto.cantidad -= cantidad;
+    console.log(`Se agregó ${cantidad} ${nombre} al carrito.`);
+  } else {
+    console.log(`No hay suficiente stock de ${nombre}.`);
+  }
 }
 
-const listaDeProductos = [new Producto("MUSCLE MAX X 90 TBS", 1820), new Producto("ULTRA MASS X 1500 GRS", 4680), new Producto("CREATINA MICRONIZADA X 300 GRS", 7500), new Producto("PRE WAR (CON CAFEINA)", 3850), new Producto("WHEY X PRO - 1 LB", 4320), new Producto("WHEY PROTEIN TRUE MADE X 2.05 LB", 6500)];
+// Calcular el costo de envío
+function calcularCostoEnvio(ciudad) {
+  let costo = 0;
+  switch (ciudad) {
+    case "Ciudad de Buenos Aires":
+      costo = 1200;
+      break;
 
-let productoAComprar = prompt("Ingrese el producto que desea comprar. Ingrese SALIR si no desea agregar mas productos");
-
-while (productoAComprar !== "SALIR") {
-  let producto = obtenerProducto(productoAComprar);
-
-  console.log(producto);
-
-  let costoDelEnvio = 0;
-
-  if (producto !== undefined) {
-    //COSTO POR ZONA ENVIO
-
-    const zonaDeEnvio = prompt("Ingrese el lugar donde quiere recibir los productos para calcular el envio:");
-
-    switch (zonaDeEnvio) {
-      case "Ciudad de Buenos Aires":
-        costoDelEnvio = 1200;
-        break;
-
-      default:
-        costoDelEnvio = 3500;
-        break;
-    }
-
-    console.log("El costo del envio es: $" + costoDelEnvio);
+    default:
+      costo = 3500;
   }
-
-  productoAComprar = prompt("Ingrese el producto que desea comprar. Ingrese SALIR si quiere salir del programa");
-
-  let total = 0;
-  for (let producto of listaDeProductos) {
-    total += producto.precio + costoDelEnvio;
-  }
-
-  console.log("Total a pagar:" + total);
-
-  // subtotal();
-
-  // function subtotal() {
-  //   for (const producto of listaDeProductos) {
-  //     Producto.sumaEnvio();
-  //     Producto.subtotal = producto.precio + costoDelEnvio;
-  //     Producto.vendido = true;
-  //   }
-  // }
+  return costo;
 }
+
+// INICIA PROGRAMA
+
+let carrito = [];
+
+let continuarComprando = true;
+while (continuarComprando) {
+  let productoAComprar = prompt("Ingrese el producto que desea comprar:");
+  let cantidadDeProducto = parseInt(prompt("Ingrese la cantidad que desea comprar:"));
+  agregarAlCarrito(carrito, productoAComprar, cantidadDeProducto);
+
+  let continuar = prompt("¿Desea seguir comprando? (s/n)");
+  continuarComprando = continuar === "s";
+}
+// Pedir al usuario que ingrese la ciudad de envío
+let ciudadEnvio = prompt("Ingrese la ciudad de envío:");
+
+// Calcular el costo de envío
+let costoEnvio = calcularCostoEnvio(ciudadEnvio);
+
+carrito.forEach((producto) => {
+  console.log(`- ${producto.cantidad} ${producto.nombre}(s) a S/ ${producto.precio} cada uno.`);
+});
+console.log(`Costo de envío a ${ciudadEnvio}: S/ ${costoEnvio}`);
+let total = carrito.reduce((sum, producto) => sum + producto.cantidad * producto.precio, 0) + costoEnvio;
+
+console.log(total);
