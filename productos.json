@@ -1,0 +1,37 @@
+[
+  {
+    "nombre": "MUSCLE MAX x 90 tbs",
+    "precio": 1820,
+    "stock": 8
+  },
+
+  {
+    "nombre": "ULTRA MASS X 1500 GRS",
+    "precio": 4680,
+    "stock": 6
+  },
+
+  {
+    "nombre": "CREATINA MICRONIZADA x 300 grs",
+    "precio": 7500,
+    "stock": 4
+  },
+
+  {
+    "nombre": "PRE WAR (Con Cafeína)",
+    "precio": 3850,
+    "stock": 5
+  },
+
+  {
+    "nombre": "WHEY X PRO - 1 LB",
+    "precio": 4320,
+    "stock": 7
+  },
+
+  {
+    "nombre": "WHEY PROTEIN TRUE MADE X 2.05 LB",
+    "precio": 6500,
+    "stock": 2
+  }
+]
