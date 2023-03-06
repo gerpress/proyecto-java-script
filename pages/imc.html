@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>IMC</title>
   </head>
   <body>
     <header>
@@ -37,32 +38,33 @@
     </header>
 
     <main>
-      <div class="section_container container my-5 p-5">
-        <h1 class="my-5">CALCULE SU IMC</h1>
-        <p>Esta calculadora proporciona el IMC y la correspondiente categoría de nivel de peso según el IMC. Utilícela para adultos de 20 años o más.</p>
+      <div id="divFormulario" class="section_container container my-5 p-5">
+        <h1 class="my-5 animate__animated animate__fadeIn">CALCULE SU IMC</h1>
+        <p class="animate__animated animate__fadeIn">Esta calculadora proporciona el IMC y la correspondiente categoría de nivel de peso según el IMC. Utilícela para adultos de 20 años o más.</p>
         <form id="formulario">
-          <div class="mb-3 my-5">
+          <div class="mb-3 my-5 animate__animated animate__fadeIn">
             <label for="Ingrese su Edad" class="form-label">Ingrese su Edad</label>
             <input type="text" class="form-control" id="Edad" placeholder="Ingrese su Edad" />
           </div>
-          <div class="mb-3 my-5">
+          <div class="mb-3 my-5 animate__animated animate__fadeIn">
             <label for="Peso en Kg" class="form-label">Peso en Kg</label>
             <input type="text" class="form-control" id="Peso" placeholder="Peso en Kg" />
           </div>
-          <div class="mb-3 my-5">
+          <div class="mb-3 my-5 animate__animated animate__fadeIn">
             <label for="Altura" class="form-label">Altura</label>
             <input type="text" class="form-control" id="Altura" placeholder="Altura" />
           </div>
           <div>
-            <button class="btn btn-outline-success my-5" type="submit" id="calcular">Calcular IMC</button>
+            <button class="btn btn-outline-success my-5 animate__animated animate__pulse" type="submit" id="calcular">Calcular IMC</button>
           </div>
-          <div class="mb-3 my-5">
+          <div class="mb-3 my-5 animate__animated animate__headShake">
             <p id="resultadoImc" class="badge text-bg-success p-2">Aquí verá el resultado de su IMC</p>
           </div>
         </form>
       </div>
     </main>
-    <script src="/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>
