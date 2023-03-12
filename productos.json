@@ -1,37 +1,43 @@
 [
   {
-    "nombre": "MUSCLE MAX x 90 tbs",
-    "precio": 1820,
-    "stock": 8
+    "nombre": "MUSCLE MAX X 90 TBS",
+    "descripcion": "FAVORECE DESARROLLO DE MASA MUSCULAR Y LA RECUPERACIÓN.",
+    "imagen": "./imagenes/producto-1.png",
+    "precio": 1820
   },
 
   {
     "nombre": "ULTRA MASS X 1500 GRS",
-    "precio": 4680,
-    "stock": 6
+    "descripcion": "ALTO EN CALORÍAS PARA EL AUMENTO DE PESO Y LA MASA MUSCULAR",
+    "imagen": "./imagenes/producto-2.png",
+    "precio": 4680
   },
 
   {
-    "nombre": "CREATINA MICRONIZADA x 300 grs",
-    "precio": 7500,
-    "stock": 4
+    "nombre": "CREATINA MICRONIZADA X 300 GRS",
+    "descripcion": "MEJORA LA POTENCIA MUSCULAR. RETRASA LA FATIGA MUSCULAR.",
+    "imagen": "./imagenes/producto-3.png",
+    "precio": 7500
   },
 
   {
-    "nombre": "PRE WAR (Con Cafeína)",
-    "precio": 3850,
-    "stock": 5
+    "nombre": "PRE WAR (CON CAFEINA)",
+    "descripcion": "ENERGÍA + CONCENTRACIÓN + RESISTENCIA",
+    "imagen": "./imagenes/producto-4.png",
+    "precio": 3850
   },
 
   {
     "nombre": "WHEY X PRO - 1 LB",
-    "precio": 4320,
-    "stock": 7
+    "descripcion": "NUEVA PRESENTACIÓN 1 LIBRA. FÓRMULA MEJORADA.",
+    "imagen": "./imagenes/producto-5.png",
+    "precio": 4320
   },
 
   {
     "nombre": "WHEY PROTEIN TRUE MADE X 2.05 LB",
-    "precio": 6500,
-    "stock": 2
+    "descripcion": "BLEND DE MÁXIMA PUREZA. RÁPIDA ABSORCIÓN Y MÁXIMA CALIDAD.",
+    "imagen": "./imagenes/producto-6.png",
+    "precio": 6500
   }
 ]
